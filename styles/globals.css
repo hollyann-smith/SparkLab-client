@@ -8,6 +8,15 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.navbar-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top of other elements */
+  background-color: #E0DED8; /* Match the navbar background color */
+  align-items: space-evenly;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -18,5 +27,5 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #E0DED8;
 }
