@@ -8,11 +8,11 @@ import { getIdeas } from '../utils/data/ideaData';
 export default function Idea() {
   const [ideas, setIdeas] = useState([]);
 
-  const getAllActivities = () => {
+  const getAllIdeas = () => {
     getIdeas().then(setIdeas);
   };
   useEffect(() => {
-    getAllActivities();
+    getAllIdeas();
   }, []);
   return (
     <>
@@ -20,7 +20,7 @@ export default function Idea() {
         <title>IDEA</title>
       </Head>
       <div className="text-center my-4">
-        <Link href="/idea/new" passHref>
+        <Link href="/ideas/new" passHref>
           <Button>Add IDEA</Button>
         </Link>
       </div>

@@ -17,15 +17,15 @@ function IdeaCard({ obj }) {
   return (
     <div className="IdeaCard">
       <Card style={{ width: '18rem', margin: '10px' }}>
-        <h1>{obj.title}</h1>
         <p>
           <Card.Img
             variant="top"
             src={obj.img}
             alt={obj.title}
-            style={{ height: '400px' }}
+            style={{ height: '200px' }}
           />
         </p>
+        <h2>{obj.title}</h2>
         <p>
           {obj.supplies.map((supply) => (
             <span key={supply.id}>{supply.name} </span>
@@ -39,11 +39,10 @@ function IdeaCard({ obj }) {
           <Button variant="primary" className="lg">VIEW</Button>
         </Link>
         <br />
-        <Link href={`/ideas/edit/${obj.id}`} passHref>
-          {/* <button type="button" className="btn">Edit</button> */}
-          <Button variant="warning" className="lg">EDIT</Button>
-        </Link>
-        <br />
+        {/* <Link href={`/ideas/edit/${obj.id}`} passHref> */}
+        {/* <button type="button" className="btn">Edit</button> */}
+        {/* <Button variant="warning" className="lg">EDIT</Button>
+        </Link> */}
         <Button variant="danger" className="btn" onClick={deletethisIdea}>DELETE</Button>
       </Card>
     </div>

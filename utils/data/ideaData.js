@@ -7,6 +7,13 @@ const getIdeas = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSupplies = () => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/supplies`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 const getSingleIdea = (id) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/cleaners/${id}.json`, {
     method: 'GET',
@@ -21,7 +28,7 @@ const getSingleIdea = (id) => new Promise((resolve, reject) => {
 
 const createIdea = (idea) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/ideas`, {
-    method: 'idea',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -56,5 +63,5 @@ const updateIdea = (id, idea) => new Promise((resolve, reject) => {
 });
 
 export {
-  getIdeas, getSingleIdea, createIdea, deleteSingleIdea, updateIdea,
+  getIdeas, getSingleIdea, createIdea, deleteSingleIdea, updateIdea, getSupplies,
 };
