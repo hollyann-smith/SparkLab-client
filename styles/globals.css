@@ -8,13 +8,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.navbar-bottom {
+/* .navbar-bottom {
   position: fixed;
   width: 100%;
   z-index: 1000;
   background-color: #E0DED8; 
   align-items: space-evenly;
-}
+} */
 
 a {
   color: inherit;
@@ -29,7 +29,7 @@ body {
   background-color: #E0DED8;
 }
 
-/* From Uiverse.io by Admin12121 */ 
+/* From Uiverse.io by Admin12121 
 .button {
   font: inherit;
   border: none;
@@ -151,4 +151,110 @@ body {
   font-size: 0.875rem;
   margin-top: 0.5rem;
   color: #8d8d8d;
+} */
+
+/* Container for the whole form */
+.form-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 4;
+}
+.form-container-left {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-grow: 4;
+}
+.form-container-right {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  max-width: 300px;
+  margin: 0 auto;
+  flex-grow: 4;
+}
+/* Input fields */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.form-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #1e1e1f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+/* List styles */
+.form-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-list-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.form-list-item-selected {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  background-color: #0f5aca;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+  color: #fdfcfc;
+}
+
+.form-list-item:hover {
+  background-color: #f0f0f0;
+}
+
+.form-list-item.selected {
+  background-color: #e0f7fa;
+}
+
+.form-list-item.selected:hover {
+  background-color: #b2ebf2;
+}
+
+/* Selected supplies display */
+.form-selected-supplies {
+  margin-top: 20px;
+  font-size: 16px;
 }

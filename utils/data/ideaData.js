@@ -39,6 +39,19 @@ const createIdea = (idea) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createSupply = (supply) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/supplies`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(supply),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const deleteSingleIdea = (idea) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/ideas/${idea}`, {
     method: 'DELETE',
@@ -63,5 +76,5 @@ const updateIdea = (id, idea) => new Promise((resolve, reject) => {
 });
 
 export {
-  getIdeas, getSingleIdea, createIdea, deleteSingleIdea, updateIdea, getSupplies,
+  getIdeas, getSingleIdea, createIdea, deleteSingleIdea, updateIdea, getSupplies, createSupply,
 };

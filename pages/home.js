@@ -2,7 +2,9 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <div>Generate a random spark of creativity!
+    <div>
+
+      Generate a random spark of creativity!
 
       --Load a random idea card--
 
