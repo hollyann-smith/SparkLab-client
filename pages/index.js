@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
-function Home() {
+function Index() {
   const { user } = useAuth();
   return (
     <div
@@ -14,8 +14,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
+      <h1>Hello {user.username}! </h1>
       <p>Click the button below to logout!</p>
       <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
         Sign Out
@@ -24,4 +23,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Index;
