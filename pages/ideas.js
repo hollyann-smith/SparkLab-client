@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import IdeaCard from '../components/IdeaCard';
 import { getIdeas } from '../utils/data/ideaData';
+import SearchBar from '../components/SearchBar';
 
 export default function Idea() {
   const [ideas, setIdeas] = useState([]);
@@ -19,6 +20,7 @@ export default function Idea() {
       <Head>
         <title>IDEA</title>
       </Head>
+      <SearchBar />
       <div className="text-center my-4">
         <Link href="/ideas/new" passHref>
           <Button>Add IDEA</Button>

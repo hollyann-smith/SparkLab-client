@@ -15,7 +15,7 @@ export default function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="E0DED8" variant="dark" className="navbar-bottom">
       <Container>
-        <Link passHref href="/">
+        <Link passHref href="/home">
           <Navbar.Brand>
             <Image
               src={logo}
