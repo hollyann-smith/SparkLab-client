@@ -59,6 +59,7 @@ const IdeaForm = ({ obj, user }) => {
 
     if (obj.id) {
       updateIdea(formInput.id, payload).then(() => router.push('/ideas'));
+      console.warn('updatepayload', payload);
     } else {
       createIdea(payload).then(() => router.push('/ideas'));
     }

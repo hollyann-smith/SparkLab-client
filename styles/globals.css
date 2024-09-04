@@ -266,6 +266,7 @@ body {
   background: white;
   padding: .4em;
   border-radius: 6px;
+  margin: 5px;
 }
 
 .card-image {
@@ -283,13 +284,10 @@ body {
   text-transform: uppercase;
   font-size: 0.7em;
   font-weight: 600;
-  color: rgb(63, 121, 230);
+  color: rgb(6, 6, 6);
   padding: 10px 7px 0;
 }
 
-.category:hover {
-  cursor: pointer;
-}
 
 .heading {
   font-weight: 600;
@@ -314,4 +312,248 @@ body {
 
 .name:hover {
   cursor: pointer;
+}
+
+/* Cool Button view */
+
+/* From Uiverse.io by gksckt */ 
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 170px;
+  height: 60px;
+  font-size: 18px;
+  background: #fff;
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  box-shadow: inset 0 0 0 4px #ef476f, 
+              inset 0 0 0 8px #ffd166, 
+              inset 0 0 0 12px #06d6a0,
+              inset 0 0 0 16px #118ab2;
+  background: #073b4c;
+  color: #fff;
+}
+
+.ideaView {
+  background-color: #ffffff;
+  border-radius: 35px;
+  padding: 35px;
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  justify-content: space-around;
+}
+
+.ideaSupplies {
+  display: flex;
+  flex-direction: row;
+}
+
+.supply-button {
+  border-radius: 35px;
+  margin: 3px;
+  padding: 3px 8px;
+}
+
+/* From Uiverse.io by boryanakrasteva */ 
+.edit-delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.bttn {
+  background-color: transparent;
+  position: relative;
+  border: none;
+}
+
+.bttn::after {
+  content: 'delete';
+  position: absolute;
+  top: -130%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(168, 7, 7);
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: .2s linear;
+  transition-delay: .2s;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icon {
+  transform: scale(1.2);
+  transition: .2s linear;
+}
+
+.bttn:hover > .icon {
+  transform: scale(1.5);
+}
+
+.bttn:hover > .icon path {
+  fill: rgb(168, 7, 7);
+}
+
+.bttn:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: -160%;
+}
+
+/* From Uiverse.io by boryanakrasteva */ 
+.btttn {
+  background-color: transparent;
+  position: relative;
+  border: none;
+}
+
+.btttn::after {
+  content: 'edit';
+  position: absolute;
+  top: -130%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(6, 70, 181);
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: .2s linear;
+  transition-delay: .2s;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icon {
+  transform: scale(1.2);
+  transition: .2s linear;
+}
+
+.btttn:hover > .icon {
+  transform: scale(1.5);
+}
+
+.btttn:hover > .icon path {
+  fill: rgb(6, 70, 181);
+}
+
+.btttn:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: -160%;
+}
+
+/* SAVED HEART IDEA CARD From Uiverse.io by waleedlh10 */ 
+.heart {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.con-like {
+  --red: rgb(255, 50, 50);
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.con-like .like {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.con-like .checkmark {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.con-like .outline,
+.con-like .filled {
+  fill: var(--red);
+  position: absolute;
+}
+
+.con-like .filled {
+  animation: kfr-filled 0.5s;
+  display: none;
+}
+
+.con-like .celebrate {
+  position: absolute;
+  animation: kfr-celebrate 0.5s;
+  animation-fill-mode: forwards;
+  display: none;
+}
+
+.con-like .poly {
+  stroke: var(--red);
+  fill: var(--red);
+}
+
+.con-like .like:checked ~ .checkmark .filled {
+  display: block
+}
+
+.con-like .like:checked ~ .checkmark .celebrate {
+  display: block
+}
+
+@keyframes kfr-filled {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes kfr-celebrate {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+    display: none;
+  }
 }

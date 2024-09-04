@@ -5,9 +5,11 @@ import Head from 'next/head';
 import IdeaCard from '../components/IdeaCard';
 import { getIdeas } from '../utils/data/ideaData';
 import SearchBar from '../components/SearchBar';
+import { useAuth } from '../utils/context/authContext';
 
 export default function Idea() {
   const [ideas, setIdeas] = useState([]);
+  const { user } = useAuth();
 
   const getAllIdeas = () => {
     getIdeas().then(setIdeas);
@@ -28,7 +30,7 @@ export default function Idea() {
       </div>
       <div style={{ margin: '20px' }} className="d-flex flex-wrap">
         {ideas.map((idea) => (
-          <IdeaCard key={idea.id} obj={idea} />
+          <IdeaCard key={idea.id} obj={idea} user={user.id} />
         ))}
       </div>
     </>
