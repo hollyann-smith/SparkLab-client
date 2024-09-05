@@ -97,6 +97,7 @@ const CollectionForm = ({ obj, user }) => {
 CollectionForm.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.number,
+    username: PropTypes.string,
   }).isRequired,
   obj: PropTypes.shape({
     id: PropTypes.number,

@@ -66,10 +66,10 @@ function IdeaCard({ obj }) {
 
       <br />
       <div className="heading"> {obj.title}
-        <Link href={`ideas/${obj.id}`} passHref>
+        <Link href={`/ideas/${obj.id}`} passHref>
           <button type="button" className="btn">view</button>
         </Link>
-        <div className="author"> By <span className="name">{obj.user.username}</span></div>
+        <div className="author"> By <span className="name">{obj.user?.username}</span></div>
       </div>
     </div>
   );

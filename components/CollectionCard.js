@@ -16,7 +16,7 @@ function CollectionCard({ obj }) {
           />
         </p>
         <h2>{obj?.name}</h2>
-        <Link href={`/ideas/${obj.id}`} passHref>
+        <Link href={`/collections/${obj.id}`} passHref>
           <Button variant="primary" className="lg">VIEW</Button>
         </Link>
         <br />

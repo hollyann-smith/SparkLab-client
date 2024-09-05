@@ -468,7 +468,7 @@ body {
 .heart {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .con-like {
@@ -479,7 +479,7 @@ body {
   margin: 4px;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .con-like .like {

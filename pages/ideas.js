@@ -30,7 +30,7 @@ export default function Idea() {
       </div>
       <div style={{ margin: '20px' }} className="d-flex flex-wrap">
         {ideas.map((idea) => (
-          <IdeaCard key={idea.id} obj={idea} user={user.id} />
+          <IdeaCard key={idea.id} obj={idea} user={user} />
         ))}
       </div>
     </>

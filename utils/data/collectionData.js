@@ -7,6 +7,18 @@ const getCollections = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleCollection = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/collections/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const createColletcion = (collection) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/collections`, {
     method: 'POST',
@@ -48,4 +60,5 @@ export {
   createColletcion,
   deleteSingleCollection,
   updateCollection,
+  getSingleCollection,
 };
