@@ -4,7 +4,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import CollectionIdeaCard from './CollectionIdeaCard';
+import CollectionFormIdeaCard from './CollectionFormIdeaCard';
 
 const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,7 +36,7 @@ const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
       {selectedIdeas.length > 0 && (
       <div className="form-list-item">
         {selectedIdeas.map((idea) => (
-          <CollectionIdeaCard
+          <CollectionFormIdeaCard
             key={idea.id}
             obj={idea}
             onClick={() => handleOptionClick(idea)}
@@ -60,7 +60,7 @@ const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
           {filteredOptions
             .filter((option) => !selectedIdeas.some((s) => s.id === option.id))
             .map((option) => (
-              <CollectionIdeaCard
+              <CollectionFormIdeaCard
                 key={option.id}
                 obj={option}
                 onClick={() => handleOptionClick(option)}

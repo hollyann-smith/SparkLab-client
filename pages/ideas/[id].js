@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-// import Link from 'next/link';
 import Link from 'next/link';
 import { deleteSingleIdea, getSingleIdea } from '../../utils/data/ideaData';
 import { useAuth } from '../../utils/context/authContext';
+import CollectionModal from '../../components/CollectionModal';
 
 export default function ViewSingleIdea() {
   const [idea, setIdea] = useState({});
@@ -15,9 +15,10 @@ export default function ViewSingleIdea() {
 
   useEffect(() => {
     if (id) {
-      getSingleIdea(id).then(setIdea);
-      // console.warn('{user}', user);
-      console.warn('idea.user', idea.user);
+      getSingleIdea(id).then((fetchedIdea) => {
+        setIdea(fetchedIdea);
+        console.warn('idea.user', fetchedIdea.user);
+      });
     }
   }, [id]);
 
@@ -74,9 +75,24 @@ export default function ViewSingleIdea() {
                   </svg>
                 </button>
               </Link>
+              <button type="button" className="buttn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="icon" viewBox="0 0 16 16">
+                  <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                </svg>
+              </button>
             </>
-          ) : ('')}
+          ) : (
+            <button type="button" className="buttn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="icon" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+              </svg>
+            </button>
+          )}
         </div>
+        <div>
+          <CollectionModal ideaId={id} />
+        </div>
+        <div />
       </div>
     </div>
   );

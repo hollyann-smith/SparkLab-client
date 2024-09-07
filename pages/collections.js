@@ -25,9 +25,11 @@ export default function Collections() {
         </Link>
       </div>
       <div style={{ margin: '20px' }} className="d-flex flex-wrap">
-        {collections.map((collection) => (
-          <CollectionCard key={collection.id} obj={collection} />
-        ))}
+        {collections
+          .filter((collection) => collection.ideas && collection.ideas.length > 0)
+          .map((collection) => (
+            <CollectionCard key={collection.id} obj={collection} />
+          ))}
       </div>
     </>
   );

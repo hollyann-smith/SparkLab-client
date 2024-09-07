@@ -8,14 +8,6 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-/* .navbar-bottom {
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  background-color: #E0DED8; 
-  align-items: space-evenly;
-} */
-
 a {
   color: inherit;
   text-decoration: none;
@@ -28,130 +20,6 @@ a {
 body {
   background-color: #E0DED8;
 }
-
-/* From Uiverse.io by Admin12121 
-.button {
-  font: inherit;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-
-.modal {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-height: 600px;
-  max-width: 500px;
-  background-color: #fff;
-  box-shadow: 0 15px 30px 0 rgba(0, 125, 171, 0.15);
-  border-radius: 10px;
-}
-
-.modal__header {
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.modal__body {
-  padding: 1rem 1rem;
-}
-
-.modal__footer {
-  padding: 0 1.5rem 1.5rem;
-}
-
-.modal__title {
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.15s ease;
-}
-
-.button--icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: transparent;
-  border-radius: 0.25rem;
-}
-
-.button--icon:focus, .button--icon:hover {
-  background-color: #ededed;
-}
-
-.button--primary {
-  background-color: #007dab;
-  color: #FFF;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.25rem;
-  font-weight: 500;
-  font-size: 0.875rem;
-}
-
-.button--primary:hover {
-  background-color: #006489;
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-}
-
-.input + .input {
-  margin-top: 1.75rem;
-}
-
-.input__label {
-  font-weight: 700;
-  font-size: 0.875rem;
-}
-
-.input__field {
-  display: block;
-  margin-top: 0.5rem;
-  border: 1px solid #DDD;
-  border-radius: 0.25rem;
-  padding: 0.75rem 0.75rem;
-  transition: 0.15s ease;
-}
-
-.input__field:focus {
-  outline: none;
-  border-color: #007dab;
-  box-shadow: 0 0 0 1px #007dab, 0 0 0 4px rgba(0, 125, 171, 0.25);
-}
-
-.input__field--textarea {
-  min-height: 100px;
-  max-width: 100%;
-}
-
-.input__description {
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-  color: #8d8d8d;
-} */
 
 /* Container for the whole form */
 .form-container {
@@ -366,7 +234,7 @@ body {
   padding: 3px 8px;
 }
 
-/* From Uiverse.io by boryanakrasteva */ 
+/* DELETE BUTTON From Uiverse.io by boryanakrasteva */ 
 .edit-delete {
   display: flex;
   flex-direction: row;
@@ -387,7 +255,7 @@ body {
   transform: translateX(-50%);
   width: fit-content;
   height: fit-content;
-  background-color: rgb(168, 7, 7);
+  background-color: #ff3131;
   padding: 4px 8px;
   border-radius: 5px;
   transition: .2s linear;
@@ -409,7 +277,7 @@ body {
 }
 
 .bttn:hover > .icon path {
-  fill: rgb(168, 7, 7);
+  fill: #ff3131;
 }
 
 .bttn:hover::after {
@@ -418,7 +286,7 @@ body {
   top: -160%;
 }
 
-/* From Uiverse.io by boryanakrasteva */ 
+/* EDIT BUTTON From Uiverse.io by boryanakrasteva */ 
 .btttn {
   background-color: transparent;
   position: relative;
@@ -459,6 +327,53 @@ body {
 }
 
 .btttn:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: -160%;
+}
+
+/* ADD TO COLLECTION BUTTN */
+
+.buttn {
+  background-color: transparent;
+  position: relative;
+  border: none;
+}
+
+.buttn::after {
+  content: 'Add to Collection';
+  position: absolute;
+  top: -130%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: fit-content;
+  background-color: #feb823;
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: .2s linear;
+  transition-delay: .2s;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icon {
+  transform: scale(1.2);
+  transition: .2s linear;
+}
+
+.buttn:hover > .icon {
+  transform: scale(1.5);
+}
+
+.buttn:hover > .icon path {
+  fill: #feb823
+}
+
+.buttn:hover::after {
   visibility: visible;
   opacity: 1;
   top: -160%;
@@ -556,4 +471,11 @@ body {
     opacity: 0;
     display: none;
   }
+}
+
+.userpage {
+  border:solid 5px rgb(6, 6, 6);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
