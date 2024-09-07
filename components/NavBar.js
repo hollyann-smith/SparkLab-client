@@ -10,12 +10,15 @@ import {
 import Image from 'next/image';
 import logo from '../public/parklab.png';
 import { signOut } from '../utils/auth';
+import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
+  const { user } = useAuth();
+  console.warn('navUser', user.fbUser.photoURL);
   return (
     <Navbar collapseOnSelect expand="lg" bg="E0DED8" variant="dark" className="navbar-bottom">
       <Container>
-        <Link passHref href="/">
+        <Link passHref href="/home">
           <Navbar.Brand>
             <Image
               src={logo}
@@ -44,6 +47,23 @@ export default function NavBar() {
             </Link>
             <Link passHref href="/collections/new">
               <Nav.Link className="text-black">Create Collections</Nav.Link>
+            </Link>
+            <Link passHref href="/user">
+              <Nav.Link className="text-black">
+                <div className="user-avatar">
+                  {/* Use Next.js Image component */}
+                  <img
+                    src={user?.fbUser?.photoURL}
+                    alt={user.displayName || 'User Profile'}
+                    width={40} // Set width
+                    height={40} // Set height
+                    style={{
+                      borderRadius: '50%', // Make it circular
+                      objectFit: 'cover', // Ensure it fits within the circle
+                    }}
+                  />
+                </div>
+              </Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>
               Sign Out
