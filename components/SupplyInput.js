@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import { createSupply } from '../utils/data/ideaData';
 
-const MultiSelectDropdown = ({ supplies, onSelect, selectedSupplies }) => {
+const SupplyInput = ({ supplies, onSelect, selectedSupplies }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [options, setOptions] = useState(supplies);
 
@@ -31,17 +31,12 @@ const MultiSelectDropdown = ({ supplies, onSelect, selectedSupplies }) => {
   const handleCreateTag = () => {
     if (searchTerm && !options.some((s) => s.name === searchTerm)) {
       const newSupply = { name: searchTerm };
-      // Call createSupply to save the new supply to the backend
       createSupply(newSupply).then((createdSupply) => {
-        // Update options with the newly created supply from the backend
         setOptions([...options, createdSupply]);
-        // Update the selected supplies with the new supply
         onSelect([...selectedSupplies, createdSupply]);
-        // Clear the search term
         setSearchTerm('');
       }).catch((error) => {
         console.error('Error creating supply:', error);
-        // Handle error if needed, such as displaying an error message
       });
     }
   };
@@ -87,7 +82,7 @@ const MultiSelectDropdown = ({ supplies, onSelect, selectedSupplies }) => {
               type="button"
               key={option.id}
               onClick={() => handleOptionClick(option)}
-              className={`form-list-item ${selectedSupplies.some((s) => s.id === option.id) ? 'selected' : ''}`}
+              className={`form-list-supply ${selectedSupplies.some((s) => s.id === option.id) ? 'selected' : ''}`}
             >
               {option.name}
             </button>
@@ -100,4 +95,4 @@ const MultiSelectDropdown = ({ supplies, onSelect, selectedSupplies }) => {
   );
 };
 
-export default MultiSelectDropdown;
+export default SupplyInput;

@@ -5,11 +5,10 @@ import {
   Navbar, //
   Container,
   Nav,
-  Button,
 } from 'react-bootstrap';
 import Image from 'next/image';
-import logo from '../public/parklab.png';
-import { signOut } from '../utils/auth';
+import logo from '../public/slo.png';
+// import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
@@ -23,7 +22,7 @@ export default function NavBar() {
             <Image
               src={logo}
               className="img"
-              height={75}
+              height={50}
               width={220}
               alt="SPARK LAB"
             />
@@ -34,20 +33,20 @@ export default function NavBar() {
           <Nav className="me-auto text-black">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/home">
-              <Nav.Link className="text-black">Home</Nav.Link>
+              <Nav.Link className="text-white">Home</Nav.Link>
             </Link>
             <Link passHref href="/ideas">
-              <Nav.Link className="text-black">Explore Ideas</Nav.Link>
+              <Nav.Link className="text-white">Explore Ideas</Nav.Link>
             </Link>
             <Link passHref href="/collections">
-              <Nav.Link className="text-black">Explore Collections</Nav.Link>
+              <Nav.Link className="text-white">Explore Collections</Nav.Link>
             </Link>
-            <Link passHref href="/ideas/new">
+            {/* <Link passHref href="/ideas/new">
               <Nav.Link className="text-black">Create Ideas</Nav.Link>
             </Link>
             <Link passHref href="/collections/new">
               <Nav.Link className="text-black">Create Collections</Nav.Link>
-            </Link>
+            </Link> */}
             <Link passHref href="/user">
               <Nav.Link className="text-black">
                 <div className="user-avatar">
@@ -65,9 +64,9 @@ export default function NavBar() {
                 </div>
               </Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>
+            {/* <Button variant="danger" onClick={signOut}>
               Sign Out
-            </Button>
+            </Button> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
