@@ -37,13 +37,18 @@ export default function ViewSingleIdea() {
     <div className="ideaView">
       <div className="ideaLeft">
         <h1>{idea.title}</h1>
-        {idea.description}
+        <br />
+        <div className="description" width="350px">
+          {idea.description}
+        </div>
       </div>
       <div className="img">
         <img
           src={idea?.img}
           alt={idea?.title}
-          style={{ height: '250px', width: '250px' }}
+          style={{
+            height: '350px', width: '350px', borderRadius: '15px', marginBottom: '15px',
+          }}
         />
         <div className="ideaSupplies">
           {idea.supplies?.map((supply) => (
@@ -75,22 +80,11 @@ export default function ViewSingleIdea() {
                   </svg>
                 </button>
               </Link>
-              <button type="button" className="buttn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="icon" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
-                </svg>
-              </button>
+              <CollectionModal ideaId={id} />
             </>
           ) : (
-            <button type="button" className="buttn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="icon" viewBox="0 0 16 16">
-                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
-              </svg>
-            </button>
+            <CollectionModal ideaId={id} />
           )}
-        </div>
-        <div>
-          <CollectionModal ideaId={id} />
         </div>
         <div />
       </div>

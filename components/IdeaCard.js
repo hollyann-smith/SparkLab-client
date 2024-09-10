@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+// import { useRouter } from 'next/router';
 import { updateIdea } from '../utils/data/ideaData';
+import CollectionModal from './CollectionModal';
 
 function IdeaCard({ obj }) {
   const [saved, setSaved] = useState(obj.saved);
+  // const router = useRouter();
+  // const { id } = router.query;
 
   const handleChange = (e) => {
     const { checked } = e.target;
@@ -27,6 +31,7 @@ function IdeaCard({ obj }) {
   return (
     <div className="card">
       <div className="heart">
+        <CollectionModal ideaId={obj.id} />
         <div className="con-like">
           <input
             className="like"
@@ -57,18 +62,23 @@ function IdeaCard({ obj }) {
       <div
         className="card-image"
       >
-        <img
-          src={obj?.img}
-          alt={obj?.title}
-          style={{ height: '150px', width: '100%' }}
-        />
+        <Link href={`/ideas/${obj.id}`} passHref>
+          <img
+            src={obj?.img}
+            alt={obj?.title}
+            style={{
+              height: '150px', width: '100%', borderRadius: '5px',
+            }}
+          />
+        </Link>
       </div>
 
       <br />
-      <div className="heading"> {obj.title}
-        <Link href={`/ideas/${obj.id}`} passHref>
-          <button type="button" className="btn">view</button>
-        </Link>
+      <div className="bottomCard"> {obj.title}
+        {/* <Link href={`/ideas/${obj.id}`} passHref>
+          <button type="button" className="view-button">view {'>'} </button>
+        </Link> */}
+        <br />
         <div className="author"> By <span className="name">{obj.user?.username}</span></div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { Button, Form, FormControl } from 'react-bootstrap';
+import { Form, FormControl } from 'react-bootstrap';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -17,8 +17,15 @@ export default function SearchBar() {
   };
   return (
     <Form className="search-bar" onSubmit={handleSubmit}>
-      <FormControl type="text" size="sm" onChange={handleChange} value={searchInput} />
-      <Button type="submit" size="sm" variant="dark">Search</Button>
+      <FormControl
+        type="text"
+        size="sm"
+        onChange={handleChange}
+        value={searchInput}
+        placeholder="Search by keyword or supplies..."
+      />
+      <button type="submit" className="search-button">Search</button>
     </Form>
+
   );
 }

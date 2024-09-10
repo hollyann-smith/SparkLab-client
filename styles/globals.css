@@ -18,7 +18,15 @@ a {
 }
 
 body {
-  background-color: #E0DED8;
+  background-color: #1f1e1e;
+  /* background-color: #f4f3f1; */
+}
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 /* Container for the whole form */
@@ -28,6 +36,7 @@ body {
   background-color: #f7f7f7;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 800px;
+  max-height: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -76,7 +85,7 @@ body {
 }
 
 .form-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(6, 70, 181);
 }
 
 /* List styles */
@@ -87,9 +96,23 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow: scroll;
+  max-height: 200px;
 }
 
 .form-list-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+  overflow: scroll;
+  max-height: 250px;
+}
+
+.form-list-supply {
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 8px;
@@ -137,30 +160,65 @@ body {
   margin: 5px;
 }
 
+.collection-card {
+  width: 250px;
+  background: white;
+  padding: .4em;
+  border-radius: 6px;
+  margin: 5px;
+  position: relative;
+}
+
+.collection-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-image:hover {
+  transform: scale(0.98);
+}
+
+.title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.name {
+  font-weight: bold;
+}
+
 .card-image {
   background-color: rgb(236, 236, 236);
   width: 100%;
   height: 130px;
   border-radius: 6px 6px 0 0;
+  margin-top: 3px;
 }
 
 .card-image:hover {
   transform: scale(0.98);
 }
 
-.category {
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-weight: 600;
-  color: rgb(6, 6, 6);
-  padding: 10px 7px 0;
-}
 
-
-.heading {
+.bottomCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-weight: 600;
   color: rgb(88, 87, 87);
   padding: 7px;
+  text-wrap: wrap;
+  text-align: center;
+  justify-content: space-between;
+  height: 100%; /* Ensure the card takes up the full available height */
+  padding: 6px;
+  box-sizing: border-box; 
 }
 
 .heading:hover {
@@ -171,16 +229,16 @@ body {
   color: gray;
   font-weight: 400;
   font-size: 11px;
-  padding-top: 20px;
+  flex-direction: column;
 }
 
 .name {
   font-weight: 600;
 }
-
+/* 
 .name:hover {
   cursor: pointer;
-}
+} */
 
 /* Cool Button view */
 
@@ -190,7 +248,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+/* 
 .btn {
   width: 170px;
   height: 60px;
@@ -202,16 +260,16 @@ body {
   outline: none;
   cursor: pointer;
   transition: all 0.4s;
-}
+} */
 
-.btn:hover {
+/* .btn:hover {
   box-shadow: inset 0 0 0 4px #ef476f, 
               inset 0 0 0 8px #ffd166, 
               inset 0 0 0 12px #06d6a0,
               inset 0 0 0 16px #118ab2;
   background: #073b4c;
   color: #fff;
-}
+} */
 
 .ideaView {
   background-color: #ffffff;
@@ -223,6 +281,11 @@ body {
   justify-content: space-around;
 }
 
+.ideaLeft {
+  max-width: 300px;
+  margin-right: 70px;
+}
+
 .ideaSupplies {
   display: flex;
   flex-direction: row;
@@ -231,7 +294,29 @@ body {
 .supply-button {
   border-radius: 35px;
   margin: 3px;
-  padding: 3px 8px;
+  padding: 8px 8px;
+  background-color: #090909;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 15px;
+  color: #e6e8ed;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.view-button {
+  border-radius: 35px;
+  margin: 3px;
+  padding: 8px 15px;
+  background-color: #090909;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 15px;
+  color: #e6e8ed;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.25rem;
+  text-align: center;
 }
 
 /* DELETE BUTTON From Uiverse.io by boryanakrasteva */ 
@@ -473,9 +558,89 @@ body {
   }
 }
 
-.userpage {
-  border:solid 5px rgb(6, 6, 6);
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  height: 40px;
+}
+
+.search-bar .form-control {
+  flex: 1;
+  border-radius: 15px;
+  height: 40px;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  border: none;
+  background-color: #080808; /* Adjust color as needed */
+  color: white;
+  padding: 0 16px; /* Adjust padding as needed */
+  cursor: pointer;
+  border-radius: 0 15px 15px 0;
+  border: 1px solid rgb(209, 213, 219);
+}
+
+.search-button:hover {
+  background-color: #feb823; /* Adjust hover color as needed */
+}
+
+.user {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* background-color: #e0f7fa; */
+}
+
+.userpageData {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.userOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ideaScroll {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr)); /* 4 cards per row */
+  gap: 5px; /* Space between cards */
+  overflow-x: auto;
+  padding: 8px;
+  width: 100%; /* Full width of the container */
+  max-width: 100%; /* Ensure it doesn't exceed the width of its parent */
+  margin: 5px;
+  position: relative;
+}
+
+.collectionScroll {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr)); /* 3 cards per row */
+  gap: 5px; /* Space between cards */
+  overflow-x: auto;
+  padding: 8px;
+  width: 100%; /* Full width of the container */
+  max-width: 100%; /* Ensure it doesn't exceed the width of its parent */
+  margin: 5px;
+  position: relative;
 }

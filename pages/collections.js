@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import Head from 'next/head';
 import { getCollections } from '../utils/data/collectionData';
@@ -21,7 +20,7 @@ export default function Collections() {
       </Head>
       <div className="text-center my-4">
         <Link href="/collections/new" passHref>
-          <Button>Create Collection</Button>
+          <button type="button" className="supply-button">Create Collection</button>
         </Link>
       </div>
       <div style={{ margin: '20px' }} className="d-flex flex-wrap">

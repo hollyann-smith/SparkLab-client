@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { createIdea, getSupplies, updateIdea } from '../../utils/data/ideaData';
-import MultiSelectDropdown from '../SupplyInput';
+import SupplyInput from '../SupplyInput';
 
 const initialState = {
   title: '',
@@ -116,12 +116,12 @@ const IdeaForm = ({ obj, user }) => {
         </Form.Group>
         <div className="form-container-right">
           <Form.Label className="form-label">Supplies</Form.Label>
-          <MultiSelectDropdown
+          <SupplyInput
             supplies={supplies}
             selectedSupplies={formInput.supplies}
             onSelect={handleSuppliesChange}
           />
-          <Button variant="primary" type="submit" className="form-submit-button">
+          <Button variant="primary" type="submit" className="supply-button">
             Submit
           </Button>
         </div>
