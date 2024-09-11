@@ -32,9 +32,9 @@ const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
   const filteredOptions = options.filter((option) => option.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className="form">
+    <div className="collectionsform">
       {selectedIdeas.length > 0 && (
-      <div className="form-list-item">
+      <div className="idea-list-item">
         {selectedIdeas.map((idea) => (
           <CollectionFormIdeaCard
             key={idea.id}
@@ -56,7 +56,7 @@ const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
           Submit
         </Button>
         {filteredOptions.length > 0 && (
-        <div className="form-list">
+        <div className="d-flex flex-wrap" style={{ margin: '20px', justifyContent: 'center' }}>
           {filteredOptions
             .filter((option) => !selectedIdeas.some((s) => s.id === option.id))
             .map((option) => (

@@ -30,7 +30,7 @@ export default function Idea() {
           <button type="button" className="supply-button">Add Idea!</button>
         </Link>
       </div>
-      <div style={{ margin: '20px' }} className="d-flex flex-wrap">
+      <div style={{ margin: '20px', justifyContent: 'center' }} className="d-flex flex-wrap">
         {ideas.map((idea) => (
           <IdeaCard key={idea.id} obj={idea} user={user} ideaId={id} />
         ))}

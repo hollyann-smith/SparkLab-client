@@ -58,9 +58,9 @@ const CollectionForm = ({ obj, user }) => {
   };
 
   return (
-    <>
+    <div className="collectionForm">
 
-      <Form onSubmit={handleSubmit} className="form-container-idea">
+      <Form onSubmit={handleSubmit} className="form-container-collection-idea">
         <Form.Group className="form-container-left">
           <h1 className="form-title">Create a Collection</h1>
           <Form.Label className="form-label">Name</Form.Label>
@@ -81,7 +81,7 @@ const CollectionForm = ({ obj, user }) => {
           />
           <br />
         </Form.Group>
-        <div className="form-container-bottom">
+        <div className="collection-container-bottom">
           <h1 className="form-label">Add Ideas</h1>
           <MultiSelectIdea
             ideas={ideas}
@@ -90,7 +90,7 @@ const CollectionForm = ({ obj, user }) => {
           />
         </div>
       </Form>
-    </>
+    </div>
   );
 };
 

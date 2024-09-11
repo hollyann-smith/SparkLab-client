@@ -23,7 +23,7 @@ export default function Collections() {
           <button type="button" className="supply-button">Create Collection</button>
         </Link>
       </div>
-      <div style={{ margin: '20px' }} className="d-flex flex-wrap">
+      <div style={{ margin: '20px', justifyContent: 'center' }} className="d-flex flex-wrap">
         {collections
           .filter((collection) => collection.ideas && collection.ideas.length > 0)
           .map((collection) => (

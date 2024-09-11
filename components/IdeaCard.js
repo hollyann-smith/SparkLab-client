@@ -75,9 +75,6 @@ function IdeaCard({ obj }) {
 
       <br />
       <div className="bottomCard"> {obj.title}
-        {/* <Link href={`/ideas/${obj.id}`} passHref>
-          <button type="button" className="view-button">view {'>'} </button>
-        </Link> */}
         <br />
         <div className="author"> By <span className="name">{obj.user?.username}</span></div>
       </div>
