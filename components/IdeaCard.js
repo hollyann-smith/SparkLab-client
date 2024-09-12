@@ -1,14 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
 import { updateIdea } from '../utils/data/ideaData';
 import CollectionModal from './CollectionModal';
 
 function IdeaCard({ obj }) {
   const [saved, setSaved] = useState(obj.saved);
-  // const router = useRouter();
-  // const { id } = router.query;
 
   const handleChange = (e) => {
     const { checked } = e.target;
@@ -18,10 +16,10 @@ function IdeaCard({ obj }) {
       id: obj.id,
       title: obj.title,
       description: obj.description,
-      saved: checked, // Updated saved value
+      saved: checked,
       img: obj.img,
       supplies: obj.supplies.map((supply) => supply.id),
-      user: obj.user.id, // The user object as required
+      user: obj.user.id,
     };
 
     console.warn('Payload:', updatedIdea);
@@ -63,11 +61,22 @@ function IdeaCard({ obj }) {
         className="card-image"
       >
         <Link href={`/ideas/${obj.id}`} passHref>
-          <img
+          {/* <img
             src={obj?.img}
             alt={obj?.title}
             style={{
               height: '150px', width: '100%', borderRadius: '5px',
+            }}
+          /> */}
+          <img
+            src={obj?.img}
+            alt={obj?.title}
+            width={500} // set a default width
+            height={150} // set a default height
+            style={{
+              width: '100%', // This allows it to be responsive
+              borderRadius: '5px',
+              objectFit: 'cover', // To keep the image ratio and fill the area
             }}
           />
         </Link>
