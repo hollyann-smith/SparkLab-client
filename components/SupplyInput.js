@@ -48,12 +48,14 @@ const SupplyInput = ({ supplies, onSelect, selectedSupplies }) => {
       {selectedSupplies.length > 0 && (
       <div className="form-list-item">
         {selectedSupplies.map((supply) => (
-          <button type="button" key={supply.id} className="form-list-item-selected">
+          <button
+            type="button"
+            key={supply.id}
+            className="form-list-item-selected"
+            onClick={() => handleOptionClick(supply)}
+          >
             {supply.name}
-            <span
-              className="remove-tag"
-              onClick={() => handleOptionClick(supply)}
-            >
+            <span>
               &times;
             </span>
           </button>

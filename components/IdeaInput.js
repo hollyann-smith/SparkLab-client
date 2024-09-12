@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 import CollectionFormIdeaCard from './CollectionFormIdeaCard';
 
 const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
@@ -34,7 +33,12 @@ const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
   return (
     <div className="collectionsform">
       {selectedIdeas.length > 0 && (
-      <div className="idea-list-item">
+      <div
+        className="d-flex flex-wrap"
+        style={{
+          margin: '20px', justifyContent: 'center',
+        }}
+      >
         {selectedIdeas.map((idea) => (
           <CollectionFormIdeaCard
             key={idea.id}
@@ -44,31 +48,48 @@ const MultiSelectIdea = ({ ideas, onSelect, selectedIdeas }) => {
         ))}
       </div>
       )}
+
       <div className="multi-select-dropdown">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          placeholder="Search Ideas..."
-          className="form-input"
-        />
-        <Button variant="primary" type="submit" className="form-submit-button">
-          Submit
-        </Button>
-        {filteredOptions.length > 0 && (
-        <div className="d-flex flex-wrap" style={{ margin: '20px', justifyContent: 'center' }}>
-          {filteredOptions
-            .filter((option) => !selectedIdeas.some((s) => s.id === option.id))
-            .map((option) => (
-              <CollectionFormIdeaCard
-                key={option.id}
-                obj={option}
-                onClick={() => handleOptionClick(option)}
-                className={`form-list-item ${selectedIdeas.some((s) => s.id === option.id) ? 'selected' : ''}`}
-              />
-            ))}
+        <div
+          className="searching"
+          style={{
+            maxWidth: '400px', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto',
+          }}
+        >
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Search Ideas..."
+            className="form-input"
+          />
         </div>
-        )}
+        <div
+          className="ideas-collection"
+          style={{
+            margin: '20px', justifyContent: 'center', overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px', marginTop: '5px',
+          }}
+        >
+          {filteredOptions.length > 0 && (
+            <div
+              className="d-flex flex-wrap"
+              style={{
+                margin: '20px', justifyContent: 'center',
+              }}
+            >
+              {filteredOptions
+                .filter((option) => !selectedIdeas.some((s) => s.id === option.id))
+                .map((option) => (
+                  <CollectionFormIdeaCard
+                    key={option.id}
+                    obj={option}
+                    onClick={() => handleOptionClick(option)}
+                    className={`form-list-item ${selectedIdeas.some((s) => s.id === option.id) ? 'selected' : ''}`}
+                  />
+                ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
 
