@@ -16,7 +16,7 @@ export default function SearchBar() {
     setSearchInput('');
   };
   return (
-    <Form className="search-bar" onSubmit={handleSubmit}>
+    <Form className="search-bar" onSubmit={handleSubmit} style={{ marginTop: '20px', marginBottom: '20px' }}>
       <FormControl
         type="text"
         size="sm"
