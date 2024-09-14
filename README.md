@@ -7,7 +7,7 @@ SparkLab is a web app designed for parents who want quick and creative activity 
 [Click here to view the deployed project](#)
 
 ## Project Board
-[Click here to view the project board](#)
+[Click here to view the project board](#https://github.com/users/hollyann-smith/projects/2)
 
 ## User Description
 SparkLab is targeted toward parents of young children (typically toddlers) who are looking for easy-to-set-up creative activities. These parents want to quickly discover ideas using materials they already have at home and save activity ideas for later.
