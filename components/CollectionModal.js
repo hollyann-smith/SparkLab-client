@@ -3,10 +3,8 @@ import React,
 { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
-// import PropTypes from 'prop-types';
 import { addIdeaToCollection, getCollections } from '../utils/data/collectionData';
 import { useAuth } from '../utils/context/authContext';
-// import CollectionCard from './CollectionCard';
 import CollectionIdeaCard from './CollectionIdeaCard';
 
 function CollectionModal({ ideaId }) {
@@ -18,14 +16,14 @@ function CollectionModal({ ideaId }) {
   const [selectedCollection, setSelectedCollection] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Flag to check if component is still mounted
+    let isMounted = true;
 
     if (user?.id) {
       getCollections()
         .then((allCollections) => {
           if (isMounted) {
             const userCollections = allCollections.filter((collection) => collection.user.id === user.id);
-            setCollections(userCollections); // Only set state if component is still mounted
+            setCollections(userCollections);
           }
         })
         .catch((error) => {
@@ -34,7 +32,7 @@ function CollectionModal({ ideaId }) {
     }
 
     return () => {
-      isMounted = false; // Cleanup function to set isMounted to false when unmounting
+      isMounted = false;
     };
   }, [user?.id]);
 
@@ -58,10 +56,6 @@ function CollectionModal({ ideaId }) {
           <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
         </svg>
       </button>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Open Modal
-      </Button> */}
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Select Collection</Modal.Title>

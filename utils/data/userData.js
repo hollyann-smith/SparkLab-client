@@ -14,6 +14,7 @@ const createUser = (payload) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+
 const getSingleUser = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${uid}`, {
     method: 'GET',
@@ -26,6 +27,19 @@ const getSingleUser = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const updateUser = (userId, user) => new Promise((resolve, reject) => {
+  console.warn('ideaId', user);
+  fetch(`${clientCredentials.databaseURL}/users/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
-  createUser, getSingleUser,
+  createUser, getSingleUser, updateUser,
 };

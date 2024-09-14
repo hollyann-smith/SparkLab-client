@@ -1,14 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
 import { updateIdea } from '../utils/data/ideaData';
 import CollectionModal from './CollectionModal';
 
 function IdeaCard({ obj }) {
   const [saved, setSaved] = useState(obj.saved);
-  // const router = useRouter();
-  // const { id } = router.query;
 
   const handleChange = (e) => {
     const { checked } = e.target;
@@ -18,10 +16,10 @@ function IdeaCard({ obj }) {
       id: obj.id,
       title: obj.title,
       description: obj.description,
-      saved: checked, // Updated saved value
+      saved: checked,
       img: obj.img,
       supplies: obj.supplies.map((supply) => supply.id),
-      user: obj.user.id, // The user object as required
+      user: obj.user.id,
     };
 
     console.warn('Payload:', updatedIdea);
@@ -66,8 +64,12 @@ function IdeaCard({ obj }) {
           <img
             src={obj?.img}
             alt={obj?.title}
+            width={500}
+            height={150}
             style={{
-              height: '150px', width: '100%', borderRadius: '5px',
+              width: '100%',
+              borderRadius: '5px',
+              objectFit: 'cover',
             }}
           />
         </Link>
@@ -75,9 +77,6 @@ function IdeaCard({ obj }) {
 
       <br />
       <div className="bottomCard"> {obj.title}
-        {/* <Link href={`/ideas/${obj.id}`} passHref>
-          <button type="button" className="view-button">view {'>'} </button>
-        </Link> */}
         <br />
         <div className="author"> By <span className="name">{obj.user?.username}</span></div>
       </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { createColletcion, updateCollection } from '../../utils/data/collectionData';
@@ -16,6 +16,7 @@ const CollectionForm = ({ obj, user }) => {
   const router = useRouter();
   const [formInput, setFormInput] = useState(initialState);
   const [ideas, setIdeas] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getIdeas().then(setIdeas);
@@ -44,6 +45,14 @@ const CollectionForm = ({ obj, user }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formInput.ideas.length === 0) {
+      alert('Please select at least one idea');
+      return;
+    }
+    setShowModal(true);
+  };
+
+  const handleFinalSubmit = () => {
     const payload = {
       ...formInput,
       user: user.id,
@@ -55,42 +64,62 @@ const CollectionForm = ({ obj, user }) => {
     } else {
       createColletcion(payload).then(() => router.push('/collections'));
     }
+    setShowModal(false);
   };
 
   return (
-    <>
-
-      <Form onSubmit={handleSubmit} className="form-container-idea">
-        <Form.Group className="form-container-left">
-          <h1 className="form-title">Create a Collection</h1>
-          <Form.Label className="form-label">Name</Form.Label>
-          <Form.Control
-            name="name"
-            required
-            value={formInput.name}
-            onChange={handleChange}
-            className="form-input"
-          />
-          <Form.Label className="form-label">Cover Photo</Form.Label>
-          <Form.Control
-            name="cover"
-            required
-            value={formInput.cover}
-            onChange={handleChange}
-            className="form-input"
-          />
-          <br />
+    <div className="collectionForm">
+      <Form onSubmit={handleSubmit} className="form-container-collection-idea">
+        <Form.Group className="form-container-col">
+          <h1 className="form-title" style={{ textAlign: 'center', marginBottom: '30px' }}>{obj.id ? 'Edit Collection' : 'Create a Collection'}</h1>
+          {formInput.ideas.length > 0 && (
+          <div className="col-header" style={{ maxWidth: '200px', margin: 'auto' }}>
+            <button type="submit" className="form-button">
+              Continue
+            </button>
+          </div>
+          )}
+          <div className="collection-container-bottom">
+            <MultiSelectIdea
+              ideas={ideas}
+              selectedIdeas={formInput.ideas}
+              onSelect={handleIdeasChange}
+            />
+          </div>
         </Form.Group>
-        <div className="form-container-bottom">
-          <h1 className="form-label">Add Ideas</h1>
-          <MultiSelectIdea
-            ideas={ideas}
-            selectedIdeas={formInput.ideas}
-            onSelect={handleIdeasChange}
-          />
-        </div>
       </Form>
-    </>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Collection Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              name="name"
+              required
+              value={formInput.name}
+              onChange={handleChange}
+              className="form-input"
+            />
+            <Form.Label>Cover Photo</Form.Label>
+            <Form.Control
+              name="cover"
+              required
+              value={formInput.cover}
+              onChange={handleChange}
+              className="form-input"
+            />
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <button type="submit" className="form-button" onClick={handleFinalSubmit}>
+            Create Collection
+          </button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   );
 };
 

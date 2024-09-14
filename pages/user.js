@@ -1,19 +1,28 @@
-// import { Button } from 'react-bootstrap';
-import Link from 'next/link';
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useAuth } from '../utils/context/authContext';
-import { getIdeas } from '../utils/data/ideaData';
+import { deleteSingleSupply, getIdeas, getSupplies } from '../utils/data/ideaData';
 import IdeaCard from '../components/IdeaCard';
 import CollectionCard from '../components/CollectionCard';
 import { getCollections } from '../utils/data/collectionData';
-import { signOut } from '../utils/auth';
+import UsernameModal from '../components/UsernameModal';
 
 export default function UserPage() {
   const [ideas, setIdeas] = useState([]);
   const [collections, setCollections] = useState([]);
-  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('saved');
+  const [supplies, setSupplies] = useState([]);
+  const { user } = useAuth();
+
+  const getAllSupplies = () => {
+    getSupplies().then(setSupplies);
+  };
+  useEffect(() => {
+    getAllSupplies();
+  }, []);
+
+  console.warn('supplies', supplies);
 
   const getAllCollections = () => {
     getCollections().then(setCollections);
@@ -28,6 +37,17 @@ export default function UserPage() {
   useEffect(() => {
     getAllIdeas();
   }, []);
+
+  const userCreatedIdeas = ideas.filter((idea) => idea.user.id === user?.id);
+
+  const userSupplies = [];
+  userCreatedIdeas.forEach((idea) => {
+    idea.supplies.forEach((supply) => {
+      if (!userSupplies.some((item) => item.id === supply.id)) {
+        userSupplies.push(supply);
+      }
+    });
+  });
 
   const filteredIdeas = ideas.filter((idea) => {
     if (activeTab === 'saved') {
@@ -47,35 +67,27 @@ export default function UserPage() {
     return true;
   });
 
+  const deleteSupply = async (supplyId) => {
+    if (window.confirm('Are you sure you want to delete this supply?')) {
+      try {
+        await deleteSingleSupply(supplyId);
+        getAllSupplies();
+      } catch (error) {
+        console.error('Failed to delete the supply', error);
+      }
+    }
+  };
+
   return (
     <>
       <Head>
         <title>USER</title>
       </Head>
-      <div className="user">
-        <div>
-          <h1 className="text-white">{user?.username}</h1>
-          {/* <img
-            src={user?.fbUser?.photoURL}
-            alt={user.displayName || 'User Profile'}
-            width={80} // Set width
-            height={80} // Set height
-            style={{
-              borderRadius: '50%', // Make it circular
-              objectFit: 'cover', // Ensure it fits within the circle
-            }}
-          /> */}
-          <br />
-          <Link href="/user/edit" passHref>
-            <button type="button" className="supply-button">edit profile</button>
-          </Link>
-          <button type="submit" className="supply-button" onClick={signOut}>
-            Sign Out
-          </button>
-        </div>
+      <div className="edit-user">
+        <h1 className="text-white">{user?.username}</h1>
+        <UsernameModal />
       </div>
-      <br />
-      <br />
+      <div className="user" />
       <div className="userOptions">
         <button type="button" className="supply-button" onClick={() => setActiveTab('saved')}>
           Saved
@@ -86,20 +98,37 @@ export default function UserPage() {
 
       </div>
       <div className="userpageData">
-        <h2 className="text-white">My Ideas:
+        <h2 className="text-white">{activeTab === 'saved' ? 'Saved Ideas:' : 'My Ideas:'}
         </h2>
         <div className="ideaScroll">
           {filteredIdeas.map((idea) => (
             <IdeaCard key={idea.id} obj={idea} user={user} />
           ))}
         </div>
-        <h2 className="text-white"> My Collections:</h2>
+        <h2 className="text-white">{activeTab === 'saved' ? '' : 'My Collections:'}</h2>
         <div className="collectionScroll">
           {filteredCollections.map((collection) => (
             <CollectionCard key={collection.id} obj={collection} user={user} />
           ))}
         </div>
-        <h2 className="text-white">My Supplies:</h2>
+        {activeTab === 'created' && (
+          <>
+            <h2 className="text-white">My Supplies:</h2>
+            <div className="supplyScroll">
+              {userSupplies.map((supply) => (
+                <button
+                  className="supply-user"
+                  type="button"
+                  key={supply.id}
+                  onClick={() => deleteSupply(supply.id)}
+                >
+                  {supply.name}
+                  <span className="remove-tag">&times;</span>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

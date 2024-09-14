@@ -16,11 +16,7 @@ export default function EditCollection() {
 
   return (
     <div>
-      <div className="card">
-        <>
-          <CollectionForm obj={editCollection} user={user} />
-        </>
-      </div>
+      <CollectionForm obj={editCollection} user={user} />
     </div>
   );
 }
