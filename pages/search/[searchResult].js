@@ -37,11 +37,11 @@ export default function SearchPage() {
 
   useEffect(() => {
     searchAllIdeas();
-    searchAllCollections(); // Add the collection search
+    searchAllCollections();
 
     return () => {
       setSearchIdeas([]);
-      setSearchCollections([]); // Clear collections when search changes
+      setSearchCollections([]);
     };
   }, [searchAllIdeas, searchAllCollections]);
 

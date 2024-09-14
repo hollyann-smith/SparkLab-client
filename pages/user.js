@@ -7,21 +7,13 @@ import IdeaCard from '../components/IdeaCard';
 import CollectionCard from '../components/CollectionCard';
 import { getCollections } from '../utils/data/collectionData';
 import UsernameModal from '../components/UsernameModal';
-// import { getSingleUser } from '../utils/data/userData';
 
 export default function UserPage() {
   const [ideas, setIdeas] = useState([]);
   const [collections, setCollections] = useState([]);
-  // const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('saved');
   const [supplies, setSupplies] = useState([]);
   const { user } = useAuth();
-  // const [refresh, setRefresh] = useState(false);
-
-  // const handleUserUpdated = (updatedUser) => {
-  //   getSingleUser(updatedUser.id);
-  //   setRefresh(!refresh);
-  // };
 
   const getAllSupplies = () => {
     getSupplies().then(setSupplies);

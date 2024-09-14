@@ -61,22 +61,15 @@ function IdeaCard({ obj }) {
         className="card-image"
       >
         <Link href={`/ideas/${obj.id}`} passHref>
-          {/* <img
-            src={obj?.img}
-            alt={obj?.title}
-            style={{
-              height: '150px', width: '100%', borderRadius: '5px',
-            }}
-          /> */}
           <img
             src={obj?.img}
             alt={obj?.title}
-            width={500} // set a default width
-            height={150} // set a default height
+            width={500}
+            height={150}
             style={{
-              width: '100%', // This allows it to be responsive
+              width: '100%',
               borderRadius: '5px',
-              objectFit: 'cover', // To keep the image ratio and fill the area
+              objectFit: 'cover',
             }}
           />
         </Link>

@@ -20,12 +20,7 @@ export default function Collections() {
   useEffect(() => {
     getAllCollections();
   }, []);
-  // const getAllCollections = () => {
-  //   getCollections().then(setCollections);
-  // };
-  // useEffect(() => {
-  //   getAllCollections();
-  // }, []);
+
   return (
     <>
       <Head>
