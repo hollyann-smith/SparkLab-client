@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import Image from 'next/image';
 import { signIn } from '../utils/auth';
+import logo from '../public/bigslo.png';
 
 function Signin() {
   return (
@@ -12,14 +14,21 @@ function Signin() {
         margin: '0 auto',
         zIndex: 1,
         minHeight: '25rem',
-        width: '100%',
+        width: '400px',
         minWidth: '30rem',
         paddingBlock: '0 5rem',
+        color: 'white',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+      <Image
+        src={logo}
+        className="img"
+        height={250}
+        width={200}
+        alt="SPARK LAB"
+      />
+      <br />
+      <Button type="button" size="lg" className="supply-button" onClick={signIn}>
         Sign In
       </Button>
     </div>
