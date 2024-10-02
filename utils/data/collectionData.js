@@ -44,7 +44,6 @@ const deleteSingleCollection = (collection) => new Promise((resolve, reject) => 
 });
 
 const updateCollection = (collectionId, collection) => new Promise((resolve, reject) => {
-  console.warn('UPDATEcollection', collection);
   fetch(`${clientCredentials.databaseURL}/collections/${collectionId}`, {
     method: 'PUT',
     headers: {
@@ -73,9 +72,6 @@ const addIdeaToCollection = (collectionId, ideaId) => {
 
         updateCollection(collectionId, reqObj)
           .then(() => {
-            console.warn('PROMISEcollectionId', collectionId);
-            console.warn('ideaId', ideaId);
-            console.warn('collection', collection);
             console.warn('Idea added to collection successfully');
           })
           .catch((error) => {

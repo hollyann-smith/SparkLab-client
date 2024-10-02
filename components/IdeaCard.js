@@ -85,9 +85,9 @@ function IdeaCard({ obj }) {
 }
 
 IdeaCard.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
+  // user: PropTypes.shape({
+  //   id: PropTypes.number,
+  // }).isRequired,
   obj: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
