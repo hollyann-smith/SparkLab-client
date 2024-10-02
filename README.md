@@ -4,7 +4,9 @@
 SparkLab is a web app designed for parents who want quick and creative activity ideas for their toddlers. It pulls in data about art and science activities, allowing users to filter activities by the supplies they have on hand. SparkLab helps minimize screen time and encourage hands-on, educational fun.
 
 ## Deployed Project
-[Click here to view the deployed project](https://www.loom.com/share/f5028f1322b24934b1ecdae2c5356880?sid=d5162c92-b66a-46ae-b2f1-ccb3fa352b35)
+[Click here to view the deployed project](https://sparklab.netlify.app)
+
+[Click here to View Loom Walkthrough](https://www.loom.com/share/f5028f1322b24934b1ecdae2c5356880?sid=d5162c92-b66a-46ae-b2f1-ccb3fa352b35)
 
 ## Project Board
 [Click here to view the project board](https://github.com/users/hollyann-smith/projects/2)
