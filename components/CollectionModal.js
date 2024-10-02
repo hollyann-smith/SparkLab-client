@@ -17,7 +17,6 @@ function CollectionModal({ ideaId }) {
 
   useEffect(() => {
     let isMounted = true;
-
     if (user?.id) {
       getCollections()
         .then((allCollections) => {
@@ -34,18 +33,16 @@ function CollectionModal({ ideaId }) {
     return () => {
       isMounted = false;
     };
-  }, [user?.id]);
+  }, [ideaId, user.id]);
 
   const handleCardClick = (collectionId) => {
     setSelectedCollection(collectionId);
-    console.warn('collectionId', collectionId);
   };
 
   const handleSave = () => {
     if (selectedCollection) {
-      addIdeaToCollection(selectedCollection, ideaId);
+      addIdeaToCollection(selectedCollection, ideaId.id);
       handleClose();
-      console.warn('selectedCollection', selectedCollection);
     }
   };
 

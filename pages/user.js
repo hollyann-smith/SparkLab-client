@@ -12,17 +12,7 @@ export default function UserPage() {
   const [ideas, setIdeas] = useState([]);
   const [collections, setCollections] = useState([]);
   const [activeTab, setActiveTab] = useState('saved');
-  const [supplies, setSupplies] = useState([]);
   const { user } = useAuth();
-
-  const getAllSupplies = () => {
-    getSupplies().then(setSupplies);
-  };
-  useEffect(() => {
-    getAllSupplies();
-  }, []);
-
-  console.warn('supplies', supplies);
 
   const getAllCollections = () => {
     getCollections().then(setCollections);
@@ -71,7 +61,7 @@ export default function UserPage() {
     if (window.confirm('Are you sure you want to delete this supply?')) {
       try {
         await deleteSingleSupply(supplyId);
-        getAllSupplies();
+        getSupplies();
       } catch (error) {
         console.error('Failed to delete the supply', error);
       }

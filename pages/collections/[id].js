@@ -21,7 +21,6 @@ export default function ViewSingleCollection() {
     if (id) {
       getSingleCollection(id).then(setCollection);
     }
-    console.warn('collection', collection);
   }, [id]);
 
   return (

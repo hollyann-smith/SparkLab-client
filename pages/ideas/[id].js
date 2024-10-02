@@ -21,7 +21,6 @@ export default function ViewSingleIdea() {
     if (id) {
       getSingleIdea(id).then((fetchedIdea) => {
         setIdea(fetchedIdea);
-        console.warn('idea.user', fetchedIdea.user);
       });
     }
   }, [id]);
@@ -102,10 +101,10 @@ export default function ViewSingleIdea() {
                     </svg>
                   </button>
                 </Link>
-                <CollectionModal ideaId={id} />
+                <CollectionModal ideaId={Number(id)} />
               </>
             ) : (
-              <CollectionModal ideaId={id} />
+              <CollectionModal ideaId={Number(id)} />
             )}
           </div>
           <div />

@@ -26,7 +26,7 @@ export default function NavBar() {
             </Link>
           </Nav>
           <div className="navbar-logo">
-            <Link passHref href="/home">
+            <Link passHref href="/">
               <Navbar.Brand className="d-flex justify-content-center align-items-center">
                 <Image
                   src={logo}
