@@ -8,6 +8,8 @@ SparkLab is a web app designed for parents who want quick and creative activity 
 
 [Click here to View Loom Walkthrough](https://www.loom.com/share/f5028f1322b24934b1ecdae2c5356880?sid=d5162c92-b66a-46ae-b2f1-ccb3fa352b35)
 
+[Click here to view deployed Backend](https://sparklab-server-dde0a6c07bfc.herokuapp.com)
+
 ## Project Board
 [Click here to view the project board](https://github.com/users/hollyann-smith/projects/2)
 
