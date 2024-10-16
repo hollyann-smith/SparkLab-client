@@ -1,3 +1,5 @@
+![Screenshot 2024-07-29 at 9 48 17 PM](https://github.com/user-attachments/assets/da23fe71-04dd-408c-a652-73de1dac5f74)
+
 # SparkLab
 
 ## Overview
