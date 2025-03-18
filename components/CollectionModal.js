@@ -41,7 +41,7 @@ function CollectionModal({ ideaId }) {
 
   const handleSave = () => {
     if (selectedCollection) {
-      addIdeaToCollection(selectedCollection, ideaId.id);
+      addIdeaToCollection(selectedCollection, ideaId);
       handleClose();
     }
   };

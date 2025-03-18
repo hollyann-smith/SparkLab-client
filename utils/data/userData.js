@@ -28,7 +28,6 @@ const getSingleUser = (uid) => new Promise((resolve, reject) => {
 });
 
 const updateUser = (userId, user) => new Promise((resolve, reject) => {
-  console.warn('ideaId', user);
   fetch(`${clientCredentials.databaseURL}/users/${userId}`, {
     method: 'PUT',
     headers: {

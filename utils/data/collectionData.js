@@ -69,7 +69,6 @@ const addIdeaToCollection = (collectionId, ideaId) => {
           cover: collection.cover,
           ideas: collection.ideas.map((idea) => idea.id),
         };
-
         updateCollection(collectionId, reqObj)
           .then(() => {
             console.warn('Idea added to collection successfully');

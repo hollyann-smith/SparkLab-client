@@ -22,7 +22,6 @@ function IdeaCard({ obj }) {
       user: obj.user.id,
     };
 
-    console.warn('Payload:', updatedIdea);
     updateIdea(obj.id, updatedIdea);
   };
 
